@@ -1,6 +1,7 @@
-=== ✅ Results of Parachute Calculation, by David Presker, https://github.com/kledolin ===
+===     ✅ Results of Parachute Calculation, by David Presker     ===
+=== https://github.com/kledolin/model_rocket_parachute_calculator ===
 
-Project name: test i
+Project name: Combustion 16
 Parachute surface area: 67.31 in²
 Parachute diameter without Spill hole: 9.7 in
 Parachute diameter with Spill hole: 9.9 in

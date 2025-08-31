@@ -1,0 +1,14 @@
+===     ✅ Results of Parachute Calculation, by David Presker     ===
+=== https://github.com/kledolin/model_rocket_parachute_calculator ===
+
+Project name: Abaketa 3 Vulcanis XVI
+Parachute surface area: 737.95 cm²
+Parachute diameter without Spill hole: 29.8 cm
+Parachute diameter with Spill hole: 30.4 cm
+Spill hole diameter: 6.1 cm
+Spill Hole Area: 29.09 cm²
+Parachute area over all: 767.04 cm²
+Area ratio Spill hole/Surface area: 3.94 %
+Area ratio Spill hole/Area over all: 3.79 %
+
+Inputs → Rocket mass: 70 g, Shape: octo, Spill Hole: 20.0 %, Cd: 0.75, ρ: 1.225 kg/m³, g: 9.8067 m/s², v: 4.50 m/s

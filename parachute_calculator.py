@@ -71,7 +71,7 @@ def get_vertices(shape, D_mm):
 def draw_parachute(
     ax, shape, D_mm, spill_mm, project_name, rocket_mass,
     page_w, page_h, page_size_name, k_factor=0.01, draw_cutout=True,
-    author_name="David Presker", border_mm=5, units="cm", github="https://github.com/kledolin"
+    author_name="David Presker", border_mm=5, units="cm", github="https://github.com/kledolin/model_rocket_parachute_calculator"
  
 ):
     verts, n_sides = get_vertices(shape, D_mm)
@@ -159,9 +159,9 @@ DEFAULT_K = {"round":0.007,"square":0.018,"hex":0.012,"octo":0.01}
 # Main calculator
 # ------------------------
 def model_rocket_parachute_calculator():
-    print("===  Model Rocket Parachute Calculator  ===")
-    print("===          by David Presker           ===")
-    print("=== Github: https://github.com/kledolin ===\n")
+    print("===               Model Rocket Parachute Calculator               ===")
+    print("===                        by David Presker                       ===")
+    print("=== https://github.com/kledolin/model_rocket_parachute_calculator ===\n")
     try:
         unit_system = input("Units: metric (m) or imperial (i) [Default:m]: ").strip().lower()
         use_imperial = (unit_system == 'i')
@@ -216,7 +216,8 @@ def model_rocket_parachute_calculator():
         fname_safe = re.sub(r'[^\w\d-]', '_', project_name.strip()) if project_name.strip() else "parachute"
         txt_filename = f"parachute_{fname_safe}.txt"
         tee = Tee(txt_filename)
-        print("=== ✅ Results of Parachute Calculation, by David Presker, https://github.com/kledolin ===\n", file=tee)
+        print("===     ✅ Results of Parachute Calculation, by David Presker     ===", file=tee)
+        print("=== https://github.com/kledolin/model_rocket_parachute_calculator ===\n", file=tee)        
         if project_name:
             print(f"Project name: {project_name}", file=tee)
         if use_imperial:
