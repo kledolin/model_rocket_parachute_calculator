@@ -1,0 +1,13 @@
+=== ✅ Results of Parachute Calculation, by David Presker, https://github.com/kledolin ===
+
+Project name: test i
+Parachute surface area: 78.53 in²
+Parachute diameter without Spill hole: 10.4 in
+Parachute diameter with Spill hole: 10.7 in
+Spill hole diameter: 2.1 in
+Spill Hole Area: 3.58 in²
+Parachute area over all: 82.11 in²
+Area ratio Spill hole/Surface area: 4.55 %
+Area ratio Spill hole/Area over all: 4.36 %
+
+Inputs → Rocket mass: 1.75 oz, Shape: hex, Spill Hole: 20.0 %, Cd: 0.75, ρ: 0.00238 slugs/ft³, g: 32.174 ft/s², v: 15.00 ft/s
