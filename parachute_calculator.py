@@ -47,7 +47,7 @@ def compute_parachute_area(mass, gravity, velocity, air_density, Cd):
 # Page sizes
 # ------------------------
 A_SERIES = {"A0": (841, 1189), "A1": (594, 841), "A2": (420, 594), "A3": (297, 420), "A4": (210, 297)}
-ANSI_SERIES = {"ANSI E": (34*INCH_TO_MM, 44*INCH_TO_MM), "ANSI D": (22*INCH_TO_MM, 34*INCH_TO_MM), "ANSI C": (17*INCH_TO_MM, 22*INCH_TO_MM), "ANSI B": (11*INCH_TO_MM, 17*INCH_TO_MM), "ANSI A": (8.5*INCH_TO_MM, 11*INCH_TO_MM)}
+ANSI_SERIES = {"ANSI_E": (34*INCH_TO_MM, 44*INCH_TO_MM), "ANSI_D": (22*INCH_TO_MM, 34*INCH_TO_MM), "ANSI_C": (17*INCH_TO_MM, 22*INCH_TO_MM), "ANSI_B": (11*INCH_TO_MM, 17*INCH_TO_MM), "ANSI_A": (8.5*INCH_TO_MM, 11*INCH_TO_MM)}
 
 # ------------------------
 # Shape vertices
