@@ -33,9 +33,9 @@ FT_TO_M = 0.3048
 def compute_diameter_from_area(A, d_spill_percent, shape):
     if shape == 'round':
         return 2 * math.sqrt(A / ((1-(d_spill_percent/100)**2) * math.pi))
-    elif shape == 'hex':
+    elif shape == 'hexagone':
         return math.sqrt(2*A/(3**(1/3) - (d_spill_percent/100)**2 * math.pi/2))
-    elif shape == 'octo':
+    elif shape == 'octogone':
         return math.sqrt(A / ((2 * (math.sqrt(2)-1)) - (d_spill_percent/100)**2 * math.pi / 4))
     elif shape == 'square':
         return math.sqrt(A / (1 - ((d_spill_percent/100)**2 * math.pi / 4)))
@@ -59,8 +59,8 @@ def get_vertices(shape, D_mm):
         verts = [(R*math.cos(2*math.pi*i/n_sides), R*math.sin(2*math.pi*i/n_sides)) for i in range(n_sides)]
     else:
         if shape=="square": n_sides, rot = 4, math.pi/4
-        elif shape=="hex": n_sides, rot = 6, math.pi/6
-        elif shape=="octo": n_sides, rot = 8, math.pi/8
+        elif shape=="hexagone": n_sides, rot = 6, math.pi/6
+        elif shape=="octogone": n_sides, rot = 8, math.pi/8
         R = D_mm/2/math.cos(math.pi/n_sides)
         verts = [(R*math.cos(2*math.pi*i/n_sides + rot), R*math.sin(2*math.pi*i/n_sides + rot)) for i in range(n_sides)]
     return verts, n_sides
@@ -153,7 +153,7 @@ def draw_parachute(
     ax.text(right_margin, -page_h/2 + 15, github, ha='right', va='bottom', fontsize=8, fontweight='normal')
 
 # ------------------------
-DEFAULT_K = {"round":0.007,"square":0.018,"hex":0.012,"octo":0.01}
+DEFAULT_K = {"round":0.007,"square":0.018,"hexagone":0.012,"octogone":0.01}
 
 # ------------------------
 # Main calculator
@@ -175,10 +175,10 @@ def model_rocket_parachute_calculator():
         mass = float(mass_input) * OUNCE_TO_G if use_imperial else float(mass_input)
         mass_label = f"{mass_input} oz" if use_imperial else f"{mass_input} g"
 
-        SHAPE_MAP = {"0": "round", "4": "square", "6": "hex", "8": "octo"}
-        VALID_SHAPES = ["round", "square", "hex", "octo"]
-        shape_input = input("Parachute shape: 0=round, 4=square, 6=hex, 8=octo [Default:8]: ").strip().lower()
-        shape = shape_input if shape_input in VALID_SHAPES else SHAPE_MAP.get(shape_input, "octo")
+        SHAPE_MAP = {"0": "round", "4": "square", "6": "hexagone", "8": "octogone"}
+        VALID_SHAPES = ["round", "square", "hexagone", "octogone"]
+        shape_input = input("Parachute shape: 0=round, 4=square, 6=hexagone, 8=octogone [Default:8]: ").strip().lower()
+        shape = shape_input if shape_input in VALID_SHAPES else SHAPE_MAP.get(shape_input, "octogone")
 
         d_spill_percent = float(input("Spill hole size % of diameter [Default:20]: ").strip() or 20.0)
         velocity = float(input(f"Descent rate v ({'ft/s' if use_imperial else 'm/s'}) [Default:{15 if use_imperial else 4.5}]: ") or (15 if use_imperial else 4.5))
@@ -219,18 +219,19 @@ def model_rocket_parachute_calculator():
         print("===     ✅ Results of Parachute Calculation, by David Presker     ===", file=tee)
         print("=== https://github.com/kledolin/model_rocket_parachute_calculator ===\n", file=tee)        
         if project_name:
-            print(f"Project name: {project_name}", file=tee)
+            print(f"Project name: {project_name}\n", file=tee)
+            print(f"Parachute shape: {shape}", file=tee)
         if use_imperial:
             print(f"Parachute surface area: {area/0.00064516:.2f} in²", file=tee)
-            print(f"Parachute diameter without Spill hole: {d_no_spill/0.0254:.1f} in", file=tee)
-            print(f"Parachute diameter with Spill hole: {d_final/0.0254:.1f} in", file=tee)
+            print(f"Parachute diameter (/flat-to-flat) without Spill hole: {d_no_spill/0.0254:.1f} in", file=tee)
+            print(f"Parachute diameter (/flat-to-flat) with Spill hole: {d_final/0.0254:.1f} in", file=tee)
             print(f"Spill hole diameter: {d_spill/0.0254:.1f} in", file=tee)
             print(f"Spill Hole Area: {area_spill/0.00064516:.2f} in²", file=tee)
             print(f"Parachute area over all: {area_total/0.00064516:.2f} in²", file=tee)
         else:
             print(f"Parachute surface area: {area*10000:.2f} cm²", file=tee)
-            print(f"Parachute diameter without Spill hole: {d_no_spill*100:.1f} cm", file=tee)
-            print(f"Parachute diameter with Spill hole: {d_final*100:.1f} cm", file=tee)
+            print(f"Parachute diameter (/flat-to-flat) without Spill hole: {d_no_spill*100:.1f} cm", file=tee)
+            print(f"Parachute diameter (/flat-to-flat) with Spill hole: {d_final*100:.1f} cm", file=tee)
             print(f"Spill hole diameter: {d_spill*100:.1f} cm", file=tee)
             print(f"Spill Hole Area: {area_spill*10000:.2f} cm²", file=tee)
             print(f"Parachute area over all: {area_total*10000:.2f} cm²", file=tee)
