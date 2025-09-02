@@ -153,7 +153,7 @@ def draw_parachute(
     ax.text(right_margin, -page_h/2 + 15, github, ha='right', va='bottom', fontsize=8, fontweight='normal')
 
 # ------------------------
-DEFAULT_K = {"round":0.007,"square":0.018,"hexagone":0.012,"octogone":0.01}
+DEFAULT_K = {"round":0.007,"square":0.018,"hexagone":0.01,"octogone":0.008}
 
 # ------------------------
 # Main calculator
